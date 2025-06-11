@@ -17,7 +17,7 @@ type Employee struct {
 	Salary     float64
 }
 
-func initData() {
+func InitData() {
 	db, err := gorm.Open(sqlite.Open("employees.db"), &gorm.Config{})
 	if err != nil {
 		fmt.Println("连接db失败")

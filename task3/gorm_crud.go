@@ -35,7 +35,6 @@ func main() {
 	}
 	db.AutoMigrate(&Student{})
 
-	var std Student
 	var stds []Student
 
 	//编写SQL语句向 students 表中插入一条新记录，学生姓名为 "张三"，年龄为 20，年级为 "三年级"
@@ -52,7 +51,7 @@ func main() {
 	}
 
 	//编写SQL语句将 students 表中姓名为 "张三" 的学生年级更新为 "四年级"。
-	result := db.Model(&std).Where("name = ?", "张三").Update("grade", "四年级")
+	result := db.Model(&Student{}).Where("name = ?", "张三").Update("grade", "四年级")
 	if result.Error != nil {
 		fmt.Println("更新失败")
 	} else if result.RowsAffected == 0 {
@@ -63,7 +62,7 @@ func main() {
 	}
 
 	//编写SQL语句删除 students 表中年龄小于 15 岁的学生记录。
-	result = db.Delete(&std, "age < ?", "15")
+	result = db.Delete(&Student{}, "age < ?", 15)
 	if result.Error != nil {
 		fmt.Println("删除失败")
 	} else if result.RowsAffected == 0 {

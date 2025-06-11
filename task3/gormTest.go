@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type User struct {
+type UserTemp struct {
 	ID   uint
 	Name string
 	Age  int
@@ -24,7 +24,7 @@ func main() {
 	db.AutoMigrate(&User{})
 
 	// 增删改查操作
-	user := User{Name: "Alice", Age: 30}
+	user := UserTemp{Name: "Alice", Age: 30}
 	db.Create(&user)
 
 	var result User
